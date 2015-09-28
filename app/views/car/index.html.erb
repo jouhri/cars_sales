@@ -1,0 +1,6 @@
+<h1>Cars#index</h1>
+
+<% @cars.each do | car | %>
+  <p><%= "#{car.brand}, #{car.name}, #{car.price}, #{car.year} #{car.engine} #{car.color} " %></p>
+<% end %>
+
