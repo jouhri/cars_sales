@@ -1,6 +1,22 @@
 <h1>Cars#index</h1>
 
 <% @cars.each do | car | %>
-  <p><%= "#{car.brand}, #{car.name}, #{car.price}, #{car.year} #{car.engine} #{car.color} " %></p>
+  <%= image_tag "car_#{rand(1...7)}.jpeg"  %>
+    <%if current_user%>
+      <p><%= "#{car.brand}, #{car.name}, #{car.price}, #{car.year} #{car.engine} #{car.color} " %></p>
+      <%= form_tag buy_car_path(car) do %>
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_umZbkFDV0vblJJX97EuGm9Su"
+          data-name="<%= "#{car.brand} #{car.name}" %>"
+          data-currency="eur"
+          data-amount="<%= car.price * 100 %>"
+          data-locale="auto">
+        </script>
+        <%= hidden_field_tag 'price', "#{car.price}" %>
+      <%end%>
+    <%else%>
+      <p>To buy this car you need to login</p>
+    <%end%>
 <% end %>
 
