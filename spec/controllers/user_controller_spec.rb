@@ -17,4 +17,18 @@ describe CarController, type: :controller do
       response.should render_template :index
     end
   end
+
+  # describe "post #buy" do
+  #   it "populates an array of cars" do 
+  #     car = FactoryGirl.create(:car)
+  #     get :index 
+  #     assigns(:cars).should eq([car])
+  #   end
+
+  #   it "rendres the :index view" do 
+  #     get :index
+  #     response.should render_template :index
+  #   end
+  # end
+
 end
